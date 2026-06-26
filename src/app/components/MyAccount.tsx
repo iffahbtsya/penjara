@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { User, Package, MapPin, Settings, Star, ChevronRight, Edit2 } from "lucide-react";
+import { Link } from "react-router";
+import { User, Package, MapPin, Settings, Star, ChevronRight, Edit2, FileText, Truck } from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Badge } from "./ui/badge";
@@ -15,6 +16,7 @@ const STATUS_COLORS: Record<string, string> = {
   Delivered: "bg-green-100 text-green-700",
   Shipped: "bg-blue-100 text-blue-700",
   Processing: "bg-amber-100 text-amber-700",
+  Pending: "bg-slate-100 text-slate-600",
 };
 
 export function MyAccount() {
@@ -55,6 +57,8 @@ export function MyAccount() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+
+          {/* Sidebar */}
           <div className="bg-white rounded-sm shadow-sm p-4 h-fit">
             {tabs.map(t => (
               <button key={t.id} onClick={() => setTab(t.id)}
@@ -67,6 +71,8 @@ export function MyAccount() {
           </div>
 
           <div className="md:col-span-3">
+
+            {/* Profile tab */}
             {tab === "profile" && (
               <div className="bg-white rounded-sm shadow-sm p-6">
                 <div className="flex justify-between items-center mb-6">
@@ -84,7 +90,8 @@ export function MyAccount() {
                     <div key={field.key}>
                       <label className="text-xs text-[#7A7167] uppercase tracking-widest mb-1.5 block">{field.label}</label>
                       {editMode ? (
-                        <Input type={field.type} value={profile[field.key]} onChange={e => setProfile({ ...profile, [field.key]: e.target.value })}
+                        <Input type={field.type} value={profile[field.key]}
+                          onChange={e => setProfile({ ...profile, [field.key]: e.target.value })}
                           className="bg-[#F7F3EE] border-[#D4C8BC] rounded-sm h-10 text-sm" />
                       ) : (
                         <p className="text-[#1C1A18] text-sm py-2 border-b border-[#EDE8E0]">{profile[field.key]}</p>
@@ -109,29 +116,60 @@ export function MyAccount() {
               </div>
             )}
 
+            {/* Orders tab */}
             {tab === "orders" && (
               <div className="bg-white rounded-sm shadow-sm p-6">
                 <h2 style={{ fontFamily: "'Playfair Display', serif" }} className="text-xl text-[#1C1A18] mb-6">Order History</h2>
                 <div className="space-y-4">
                   {ORDER_HISTORY.map(order => (
                     <div key={order.id} className="border border-[#EDE8E0] rounded-sm p-4 hover:border-[#D4C8BC] transition-colors">
-                      <div className="flex flex-wrap items-start justify-between gap-2 mb-2">
+                      <div className="flex flex-wrap items-start justify-between gap-2 mb-3">
                         <div>
                           <p className="font-medium text-[#1C1A18] text-sm font-mono">{order.id}</p>
                           <p className="text-xs text-[#7A7167] mt-0.5">{order.date} · {order.items} item{order.items !== 1 ? "s" : ""}</p>
                         </div>
                         <span className={`text-xs px-2 py-1 rounded-full ${STATUS_COLORS[order.status]}`}>{order.status}</span>
                       </div>
+
                       <div className="flex items-center justify-between">
                         <span className="font-semibold text-[#1C1A18]">RM {order.total.toLocaleString()}</span>
-                        <button className="text-xs text-[#B07D45] hover:underline">View Details</button>
+
+                        {/* Action buttons */}
+                        <div className="flex items-center gap-2 flex-wrap justify-end">
+                          <Link to={`/invoice/${order.id}`}>
+                            <button className="flex items-center gap-1 text-xs text-[#7A7167] hover:text-[#1C1A18] border border-[#EDE8E0] rounded-sm px-2 py-1 hover:border-[#D4C8BC] transition-colors">
+                              <FileText className="w-3 h-3" /> Invoice
+                            </button>
+                          </Link>
+                          <Link to={`/track/${order.id}`}>
+                            <button className="flex items-center gap-1 text-xs text-[#7A7167] hover:text-[#1C1A18] border border-[#EDE8E0] rounded-sm px-2 py-1 hover:border-[#D4C8BC] transition-colors">
+                              <Truck className="w-3 h-3" /> Track
+                            </button>
+                          </Link>
+                          {/* Only show Write Review if Delivered */}
+                          {order.status === "Delivered" && (
+                            <Link to="/reviews/write">
+                              <button className="flex items-center gap-1 text-xs bg-[#B07D45] text-white rounded-sm px-3 py-1 hover:bg-[#9A6C38] transition-colors">
+                                <Star className="w-3 h-3" /> Write Review
+                              </button>
+                            </Link>
+                          )}
+                        </div>
                       </div>
+
+                      {/* Delivered note */}
+                      {order.status === "Delivered" && (
+                        <p className="text-xs text-green-700 mt-2 bg-green-50 rounded px-2 py-1">
+                          ✓ Order delivered — you can now leave a review
+                        </p>
+                      )}
                     </div>
                   ))}
                 </div>
               </div>
             )}
 
+            {/* Addresses tab */}
             {tab === "addresses" && (
               <div className="bg-white rounded-sm shadow-sm p-6">
                 <div className="flex justify-between items-center mb-6">
@@ -157,6 +195,7 @@ export function MyAccount() {
               </div>
             )}
 
+            {/* Settings tab */}
             {tab === "settings" && (
               <div className="bg-white rounded-sm shadow-sm p-6">
                 <h2 style={{ fontFamily: "'Playfair Display', serif" }} className="text-xl text-[#1C1A18] mb-6">Account Settings</h2>
@@ -182,6 +221,7 @@ export function MyAccount() {
                 </div>
               </div>
             )}
+
           </div>
         </div>
       </div>
