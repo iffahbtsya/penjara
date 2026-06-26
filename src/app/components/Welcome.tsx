@@ -39,7 +39,7 @@ const featuredProducts = [
     price: 1200,
     rating: 4.8,
     reviews: 34,
-    image: "https://images.unsplash.com/photo-1530018352490-c6eef07fd7e0?w=400&h=300&fit=crop&auto=format",
+    image: "https://theteakline.com/wp-content/uploads/2026/02/opera-dining-table-2-the-teak-line.png",
   },
   {
     id: 2,
@@ -48,7 +48,7 @@ const featuredProducts = [
     price: 185,
     rating: 4.6,
     reviews: 52,
-    image: "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400&h=300&fit=crop&auto=format",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTE-3ftXvnHMC15DgrUXWDe_jLRQi1rTa4MwscTlsGwtd0_KOoji7t1crk&s=10",
   },
   {
     id: 3,
@@ -66,7 +66,7 @@ const featuredProducts = [
     price: 890,
     rating: 4.9,
     reviews: 27,
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop&auto=format",
+    image: "https://www.lockstockandbarrel-uk.com/Admin/uploads/mahogany-bookcase-with-2-shelves-(side).jpg",
   },
 ];
 
