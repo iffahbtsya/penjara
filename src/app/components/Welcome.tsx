@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import { useAuth } from "../context/AuthContext";
 import { ArrowRight, Star, Shield, Truck, Award } from "lucide-react";
 import { Button } from "./ui/button";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
@@ -38,7 +39,7 @@ const featuredProducts = [
     price: 1200,
     rating: 4.8,
     reviews: 34,
-    image: "https://theteakline.com/wp-content/uploads/2026/02/opera-dining-table-2-the-teak-line.png",
+    image: "https://images.unsplash.com/photo-1530018352490-c6eef07fd7e0?w=400&h=300&fit=crop&auto=format",
   },
   {
     id: 2,
@@ -47,7 +48,7 @@ const featuredProducts = [
     price: 185,
     rating: 4.6,
     reviews: 52,
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTE-3ftXvnHMC15DgrUXWDe_jLRQi1rTa4MwscTlsGwtd0_KOoji7t1crk&s=10",
+    image: "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400&h=300&fit=crop&auto=format",
   },
   {
     id: 3,
@@ -65,7 +66,7 @@ const featuredProducts = [
     price: 890,
     rating: 4.9,
     reviews: 27,
-    image: "https://www.lockstockandbarrel-uk.com/Admin/uploads/mahogany-bookcase-with-2-shelves-(side).jpg",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop&auto=format",
   },
 ];
 
@@ -77,6 +78,7 @@ const trustBadges = [
 ];
 
 export function Welcome() {
+  const { isLoggedIn, user } = useAuth();
   return (
     <div className="bg-[#F7F3EE]">
       {/* Hero */}
@@ -105,11 +107,15 @@ export function Welcome() {
                   Shop Now <ArrowRight className="w-4 h-4" />
                 </Button>
               </Link>
-              <Link to="/register">
-                <Button variant="outline" className="border-white text-white hover:bg-white hover:text-[#1C1A18] px-8 py-3 rounded-sm text-base bg-transparent">
-                  Create Account
-                </Button>
-              </Link>
+              {!isLoggedIn ? (
+                <Link to="/register">
+                  <Button variant="outline" className="border-white text-white hover:bg-white hover:text-[#1C1A18] px-8 py-3 rounded-sm text-base bg-transparent">
+                    Create Account
+                  </Button>
+                </Link>
+              ) : (
+                <span className="text-white/70 text-sm py-3">Welcome back, {user?.name}! 👋</span>
+              )}
             </div>
           </div>
         </div>
@@ -207,11 +213,19 @@ export function Welcome() {
             <p className="text-[#A09488] leading-relaxed mb-8">
               Every product in our store is made by skilled craftsmen working within correctional facilities. Your purchase directly funds vocational training, fair wages, and rehabilitation programs.
             </p>
-            <Link to="/register">
-              <Button className="bg-[#B07D45] hover:bg-[#9A6C38] text-white rounded-sm w-fit px-8 py-3">
-                Join the Movement
-              </Button>
-            </Link>
+            {!isLoggedIn ? (
+              <Link to="/register">
+                <Button className="bg-[#B07D45] hover:bg-[#9A6C38] text-white rounded-sm w-fit px-8 py-3">
+                  Join the Movement
+                </Button>
+              </Link>
+            ) : (
+              <Link to="/catalogue">
+                <Button className="bg-[#B07D45] hover:bg-[#9A6C38] text-white rounded-sm w-fit px-8 py-3">
+                  Browse Products
+                </Button>
+              </Link>
+            )}
           </div>
           <div className="aspect-auto md:aspect-auto">
             <ImageWithFallback
