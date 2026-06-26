@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Star, Gift, Cake, Ticket, Zap, History, ArrowRight } from "lucide-react";
+import { useNavigate } from "react-router";
+import { Star, Gift, Cake, Ticket, History, ArrowRight, Zap } from "lucide-react";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import { Input } from "./ui/input";
@@ -7,9 +8,9 @@ import { useAuth } from "../context/AuthContext";
 import { toast } from "sonner";
 
 const VOUCHERS = [
-  { code: "WOOD10", desc: "10% off Wood Products", expiry: "30 Jul 2026", used: false, points: 0 },
-  { code: "FREESHIP", desc: "Free Shipping on next order", expiry: "31 Aug 2026", used: false, points: 0 },
-  { code: "BDAY20", desc: "20% Birthday Discount", expiry: "18 Jun 2026", used: true, points: 0 },
+  { code: "WOOD10", desc: "10% off Wood Products", expiry: "30 Jul 2026", used: false },
+  { code: "FREESHIP", desc: "Free Shipping on next order", expiry: "31 Aug 2026", used: false },
+  { code: "BDAY20", desc: "20% Birthday Discount", expiry: "18 Jun 2026", used: true },
 ];
 
 const TIERS = [
@@ -22,7 +23,6 @@ const TIERS = [
 function getTier(points: number) {
   return TIERS.find(t => points >= t.min && points <= t.max) || TIERS[0];
 }
-
 function getNextTier(points: number) {
   const idx = TIERS.findIndex(t => points >= t.min && points <= t.max);
   return TIERS[idx + 1] || null;
@@ -30,6 +30,7 @@ function getNextTier(points: number) {
 
 export function Rewards() {
   const { user, updatePoints } = useAuth();
+  const navigate = useNavigate();
   const points = user?.rewardPoints || 0;
   const tier = getTier(points);
   const nextTier = getNextTier(points);
@@ -37,6 +38,7 @@ export function Rewards() {
 
   const [redeemAmount, setRedeemAmount] = useState("");
   const [tab, setTab] = useState<"overview" | "redeem" | "vouchers" | "history">("overview");
+  const [bdayUsed, setBdayUsed] = useState(false);
 
   const HISTORY = [
     { action: "Purchase — TGS-847291", points: "+1200", date: "12 Jun 2026" },
@@ -55,6 +57,18 @@ export function Rewards() {
     setRedeemAmount("");
   };
 
+  const handleUseBirthday = () => {
+    if (bdayUsed) { toast.error("Birthday reward already used this month."); return; }
+    setBdayUsed(true);
+    toast.success("Birthday voucher BDAY20 activated! Use it at checkout for 20% off.");
+    navigate("/catalogue");
+  };
+
+  const handleApplyVoucher = (code: string) => {
+    toast.success(`Voucher ${code} copied! Apply it at checkout.`);
+    navigator.clipboard.writeText(code).catch(() => {});
+  };
+
   const tierColors: Record<string, string> = {
     Bronze: "from-amber-700 to-amber-600",
     Silver: "from-slate-500 to-slate-400",
@@ -64,7 +78,7 @@ export function Rewards() {
 
   return (
     <div className="min-h-screen bg-[#F7F3EE]">
-      <div className={`bg-gradient-to-br from-[#1C1A18] to-[#3D3530] py-16`}>
+      <div className="bg-gradient-to-br from-[#1C1A18] to-[#3D3530] py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <Star className="w-10 h-10 text-[#B07D45] mx-auto mb-4" />
           <p className="text-[#B07D45] text-sm uppercase tracking-widest mb-2">Loyalty Program</p>
@@ -101,7 +115,7 @@ export function Rewards() {
           )}
         </div>
 
-        {/* Tab navigation */}
+        {/* Tabs */}
         <div className="flex gap-1 bg-white rounded-sm p-1 shadow-sm w-fit flex-wrap">
           {([
             { id: "overview", label: "Overview" },
@@ -116,7 +130,7 @@ export function Rewards() {
           ))}
         </div>
 
-        {/* Overview tab */}
+        {/* Overview */}
         {tab === "overview" && (
           <>
             {/* Birthday reward */}
@@ -124,9 +138,18 @@ export function Rewards() {
               <Cake className="w-12 h-12 text-[#B07D45] flex-shrink-0" />
               <div className="flex-1">
                 <h3 style={{ fontFamily: "'Playfair Display', serif" }} className="text-xl text-[#1C1A18] mb-1">Birthday Reward</h3>
-                <p className="text-sm text-[#7A7167]">Celebrate your birthday with a special 20% discount — auto-activated during your birthday month.</p>
+                <p className="text-sm text-[#7A7167]">
+                  {bdayUsed
+                    ? "Birthday voucher activated! Use code BDAY20 at checkout for 20% off."
+                    : "Celebrate your birthday with a special 20% discount — auto-activated during your birthday month."}
+                </p>
               </div>
-              <Button className="bg-[#B07D45] hover:bg-[#9A6C38] text-white rounded-sm">Use Now</Button>
+              <Button
+                onClick={handleUseBirthday}
+                disabled={bdayUsed}
+                className={`rounded-sm text-white ${bdayUsed ? "bg-green-600 cursor-default" : "bg-[#B07D45] hover:bg-[#9A6C38]"}`}>
+                {bdayUsed ? "✓ Activated" : "Use Now"}
+              </Button>
             </div>
 
             {/* Tiers */}
@@ -170,41 +193,30 @@ export function Rewards() {
           </>
         )}
 
-        {/* Redeem tab */}
+        {/* Redeem */}
         {tab === "redeem" && (
           <div className="bg-white rounded-sm shadow-sm p-8 max-w-lg">
             <div className="flex items-center gap-2 mb-6">
               <Gift className="w-5 h-5 text-[#B07D45]" />
               <h2 style={{ fontFamily: "'Playfair Display', serif" }} className="text-xl text-[#1C1A18]">Redeem Points</h2>
             </div>
-
             <div className="bg-[#F7F3EE] rounded-sm p-4 mb-6 space-y-1 text-sm">
               <div className="flex justify-between"><span className="text-[#7A7167]">Available Points</span><span className="font-semibold text-[#1C1A18]">{points.toLocaleString()} pts</span></div>
               <div className="flex justify-between"><span className="text-[#7A7167]">Equivalent Value</span><span className="text-[#B07D45]">RM {(points * 0.01).toFixed(2)}</span></div>
               <div className="flex justify-between"><span className="text-[#7A7167]">Max per transaction</span><span className="text-[#7A7167]">5,000 pts</span></div>
             </div>
-
             <div className="mb-6">
               <label className="text-xs text-[#7A7167] uppercase tracking-widest mb-2 block">Points to Redeem</label>
               <div className="flex gap-2">
-                <Input
-                  type="number"
-                  value={redeemAmount}
-                  onChange={e => setRedeemAmount(e.target.value)}
-                  placeholder="Enter points amount"
-                  max={Math.min(points, 5000)}
-                  className="bg-[#F7F3EE] border-[#D4C8BC] rounded-sm h-11 text-sm flex-1"
-                />
+                <Input type="number" value={redeemAmount} onChange={e => setRedeemAmount(e.target.value)}
+                  placeholder="Enter points amount" max={Math.min(points, 5000)}
+                  className="bg-[#F7F3EE] border-[#D4C8BC] rounded-sm h-11 text-sm flex-1" />
                 <Button onClick={() => setRedeemAmount(String(Math.min(points, 5000)))} variant="outline" className="border-[#D4C8BC] text-[#7A7167] rounded-sm text-sm">Max</Button>
               </div>
-              {redeemAmount && (
-                <p className="text-sm text-[#B07D45] mt-2">
-                  = RM {(parseInt(redeemAmount || "0") * 0.01).toFixed(2)} discount on your next order
-                </p>
+              {redeemAmount && parseInt(redeemAmount) > 0 && (
+                <p className="text-sm text-[#B07D45] mt-2">= RM {(parseInt(redeemAmount) * 0.01).toFixed(2)} discount</p>
               )}
             </div>
-
-            {/* Quick amounts */}
             <div className="flex flex-wrap gap-2 mb-6">
               {[100, 250, 500, 1000].map(amt => (
                 <button key={amt} onClick={() => setRedeemAmount(String(Math.min(amt, points)))}
@@ -214,16 +226,15 @@ export function Rewards() {
                 </button>
               ))}
             </div>
-
             <Button onClick={handleRedeem} disabled={!redeemAmount || parseInt(redeemAmount) <= 0}
               className="w-full bg-[#B07D45] hover:bg-[#9A6C38] text-white h-11 rounded-sm">
               Redeem Points
             </Button>
-            <p className="text-xs text-center text-[#7A7167] mt-3">Points redemption applies to your next checkout session</p>
+            <p className="text-xs text-center text-[#7A7167] mt-3">Points redemption applies at your next checkout</p>
           </div>
         )}
 
-        {/* Vouchers tab */}
+        {/* Vouchers */}
         {tab === "vouchers" && (
           <div className="bg-white rounded-sm shadow-sm p-6">
             <div className="flex items-center gap-2 mb-6">
@@ -242,8 +253,9 @@ export function Rewards() {
                   <p className="text-sm text-[#7A7167] mb-3">{v.desc}</p>
                   <p className="text-xs text-[#A09488] mb-3">Expires: {v.expiry}</p>
                   {!v.used && (
-                    <Button className="w-full bg-[#1C1A18] hover:bg-[#B07D45] text-white rounded-sm text-xs h-8">
-                      Apply at Checkout
+                    <Button onClick={() => handleApplyVoucher(v.code)}
+                      className="w-full bg-[#1C1A18] hover:bg-[#B07D45] text-white rounded-sm text-xs h-8">
+                      Copy & Apply at Checkout
                     </Button>
                   )}
                 </div>
@@ -252,7 +264,7 @@ export function Rewards() {
           </div>
         )}
 
-        {/* History tab */}
+        {/* History */}
         {tab === "history" && (
           <div className="bg-white rounded-sm shadow-sm p-6">
             <div className="flex items-center gap-2 mb-6">
@@ -272,6 +284,7 @@ export function Rewards() {
             </div>
           </div>
         )}
+
       </div>
     </div>
   );
