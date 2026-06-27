@@ -115,7 +115,7 @@ export function Payment() {
                   <Label className="text-xs text-[#7A7167] mb-1 block">State</Label>
                   <select value={address.state} onChange={e => setAddress({ ...address, state: e.target.value })} className="w-full bg-[#F7F3EE] border border-[#D4C8BC] rounded-sm h-10 px-3 text-sm text-[#1C1A18]">
                     <option value="">Select State</option>
-                    {["Selangor","Kuala Lumpur","Johor","Penang","Perak","Sabah","Sarawak","Kedah","Kelantan","Terengganu"].map(s => <option key={s}>{s}</option>)}
+                    {["Terengganu","Perlis","Selangor","Negeri Sembilan","Kelantan","Perak","Kedah","Pahang","Johor","Sabah","Melaka","Pulau Pinang","Sarawak","Wilayah Persekutuan"].map(s => <option key={s}>{s}</option>)}
                   </select>
                 </div>
                 <div>
