@@ -4,6 +4,7 @@ import { toast } from "sonner";
 import { AuthProvider, useAuth } from "./context/AuthContext";
 import { CartProvider, useCart } from "./context/CartContext";
 import { OrderProvider } from "./context/OrderContext";
+import { ProductProvider } from "./context/ProductContext";
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
 import { StaffLayout } from "./components/staff/StaffLayout";
@@ -94,8 +95,10 @@ export default function App() {
       <AuthProvider>
         <CartProvider>
           <OrderProvider>
-            <Toaster position="top-right" richColors />
-            <AppRoutes />
+            <ProductProvider>
+              <Toaster position="top-right" richColors />
+              <AppRoutes />
+            </ProductProvider>
           </OrderProvider>
         </CartProvider>
       </AuthProvider>
