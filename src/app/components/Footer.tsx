@@ -9,7 +9,7 @@ export function Footer() {
           <div className="md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
               <Package className="w-5 h-5 text-[#B07D45]" />
-              <span style={{ fontFamily: "'Playfair Display', serif" }} className="text-lg font-semibold">Three Good Sales</span>
+              <span style={{ fontFamily: "'Playfair Display', serif" }} className="text-lg font-semibold">SEREPOS</span>
             </div>
             <p className="text-sm text-[#A09488] leading-relaxed">
               Quality products crafted with purpose. Supporting rehabilitation through meaningful industry.
@@ -47,7 +47,7 @@ export function Footer() {
         </div>
 
         <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-2">
-          <p className="text-xs text-[#7A7167]">© 2024 Three Good Sales. All rights reserved.</p>
+          <p className="text-xs text-[#7A7167]">© 2024 SEREPOS. All rights reserved.</p>
           <p className="text-xs text-[#7A7167]">Crafted with purpose. Built for impact.</p>
         </div>
       </div>

@@ -23,7 +23,7 @@ export function Navbar({ cartCount = 0, isLoggedIn = false, isStaff = false, onL
           <Link to="/" className="flex items-center gap-2">
             <Package className="w-6 h-6 text-[#B07D45]" />
             <span style={{ fontFamily: "'Playfair Display', serif" }} className="text-xl font-semibold tracking-tight">
-              Three Good Sales
+              SEREPOS
             </span>
           </Link>
 

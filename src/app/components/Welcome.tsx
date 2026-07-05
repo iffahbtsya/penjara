@@ -85,7 +85,7 @@ export function Welcome() {
       <section className="relative min-h-[85vh] flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <ImageWithFallback
-            src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=1600&h=900&fit=crop&auto=format"
+            src= "https://www.prison.gov.my/images/carta/institusi/penjara-seremban25.jpg?w=1600&h=900&fit=crop&auto=format"/*"https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=1600&h=900&fit=crop&auto=format"*/
             alt="Craftsmen at work"
             className="w-full h-full object-cover"
           />
@@ -95,8 +95,8 @@ export function Welcome() {
           <div className="max-w-2xl">
             <p className="text-[#B07D45] text-sm uppercase tracking-[0.2em] mb-4">Supporting Rehabilitation</p>
             <h1 style={{ fontFamily: "'Playfair Display', serif" }} className="text-5xl md:text-6xl lg:text-7xl text-white leading-tight mb-6">
-              Three Good<br />
-              <span className="italic text-[#B07D45]">Sales</span>
+              Seremban Prison<br />
+              <span className="italic text-[#B07D45]">Online Sales System</span>
             </h1>
             <p className="text-[#D4C8BC] text-lg md:text-xl leading-relaxed mb-10 max-w-xl">
               Quality products crafted by skilled hands. Every purchase supports meaningful industry and a path toward a better future.

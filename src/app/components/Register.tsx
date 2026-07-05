@@ -43,7 +43,7 @@ export function Register({ onRegister }: RegisterProps) {
       <div className="hidden lg:flex lg:w-1/2 bg-[#1C1A18] flex-col justify-between p-12">
         <Link to="/" className="flex items-center gap-2 text-white">
           <Package className="w-6 h-6 text-[#B07D45]" />
-          <span style={{ fontFamily: "'Playfair Display', serif" }} className="text-xl">Three Good Sales</span>
+          <span style={{ fontFamily: "'Playfair Display', serif" }} className="text-xl">SEREPOS</span>
         </Link>
         <div>
           <h2 style={{ fontFamily: "'Playfair Display', serif" }} className="text-4xl text-white mb-4 leading-snug">
@@ -53,7 +53,7 @@ export function Register({ onRegister }: RegisterProps) {
             Create your account to shop quality crafted products, earn rewards, and support meaningful rehabilitation programs.
           </p>
         </div>
-        <p className="text-[#7A7167] text-sm">© 2024 Three Good Sales</p>
+        <p className="text-[#7A7167] text-sm">© 2024 SEREPOS</p>
       </div>
 
       {/* Right panel */}

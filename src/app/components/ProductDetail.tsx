@@ -158,9 +158,7 @@ export function ProductDetail() {
               <Button onClick={handleAdd} className={`flex-1 h-11 rounded-sm flex items-center gap-2 justify-center transition-colors ${added ? "bg-green-600 hover:bg-green-700" : "bg-[#1C1A18] hover:bg-[#B07D45]"} text-white`}>
                 {added ? <><Check className="w-4 h-4" /> Added!</> : <><ShoppingCart className="w-4 h-4" /> Add to Cart</>}
               </Button>
-              <button onClick={() => setWishlisted(!wishlisted)} className={`p-3 border rounded-sm transition-colors ${wishlisted ? "border-rose-400 text-rose-500" : "border-[#D4C8BC] text-[#7A7167] hover:border-[#1C1A18]"}`}>
-                <Heart className={`w-4 h-4 ${wishlisted ? "fill-rose-500" : ""}`} />
-              </button>
+              
             </div>
 
             <div className="grid grid-cols-3 gap-3 border-t border-[#D4C8BC] pt-5">

@@ -6,7 +6,7 @@ import { Label } from "../ui/label";
 import { toast } from "sonner";
 
 const ALL_ORDERS = [
-  { id: "TGS-847291", customer: "Jane Doe", email: "jane@example.com", phone: "+60123456789", amount: 1330, items: 3, status: "Delivered", date: "12 Jun 2024", address: "No. 12, Jalan Bukit Bintang, KL" },
+  { id: "TGS-847291", customer: "Jane Doe", email: "jane@example.com", phone: "+60197196775", amount: 1330, items: 3, status: "Delivered", date: "12 Jun 2024", address: "No. 12, Jalan Bukit Bintang, KL" },
   { id: "TGS-651082", customer: "Ahmad Razif", email: "ahmad@example.com", phone: "+60112345678", amount: 420, items: 1, status: "Shipped", date: "3 Jun 2024", address: "Level 3, Menara Citibank, KL" },
   { id: "TGS-503774", customer: "Siti Nora", email: "siti@example.com", phone: "+60134567890", amount: 254, items: 2, status: "Processing", date: "1 Jun 2024", address: "45 Jalan Cheras, Selangor" },
   { id: "TGS-412590", customer: "Chen Wei", email: "chen@example.com", phone: "+60167890123", amount: 890, items: 1, status: "Pending", date: "28 May 2024", address: "22 Jalan Ampang, KL" },
@@ -30,25 +30,25 @@ const WA_TEMPLATES = [
     id: "order_confirmed",
     label: "Order Confirmed",
     message: (order: typeof ALL_ORDERS[0]) =>
-      `Assalamualaikum / Hi ${order.customer}! 👋\n\nYour order *${order.id}* has been confirmed.\n\n📦 Items: ${order.items}\n💰 Total: RM ${order.amount.toLocaleString()}\n📍 Delivering to: ${order.address}\n\nThank you for shopping with *Three Good Sales*! We'll notify you when your order ships. 🙏`,
+      `Assalamualaikum / Hi ${order.customer}! 👋\n\nYour order *${order.id}* has been confirmed.\n\n📦 Items: ${order.items}\n💰 Total: RM ${order.amount.toLocaleString()}\n📍 Delivering to: ${order.address}\n\nThank you for shopping with *SEREPOS – Seremban Prison Online Sales System*! We'll notify you when your order ships. 🙏`,
   },
   {
     id: "order_packed",
     label: "Order Packed",
     message: (order: typeof ALL_ORDERS[0]) =>
-      `Hi ${order.customer}! 📦\n\nGreat news! Your order *${order.id}* has been packed and is ready for collection by our courier.\n\nExpected dispatch: Tomorrow\n\nWe'll send you a tracking number once it's shipped. Stay tuned! 🚚\n\n— *Three Good Sales*`,
+      `Hi ${order.customer}! 📦\n\nGreat news! Your order *${order.id}* has been packed and is ready for collection by our courier.\n\nExpected dispatch: Tomorrow\n\nWe'll send you a tracking number once it's shipped. Stay tuned! 🚚\n\n— *SEREPOS – Seremban Prison Online Sales System*`,
   },
   {
     id: "order_shipped",
     label: "Order Shipped",
     message: (order: typeof ALL_ORDERS[0]) =>
-      `Hi ${order.customer}! 🚚\n\nYour order *${order.id}* is on its way!\n\n📦 Tracking No: MYPX${order.id.slice(-6)}\n🏠 Delivering to: ${order.address}\n⏱ Est. arrival: 3–5 business days\n\nTrack your parcel at: pos.com.my\n\n— *Three Good Sales*`,
+      `Hi ${order.customer}! 🚚\n\nYour order *${order.id}* is on its way!\n\n📦 Tracking No: MYPX${order.id.slice(-6)}\n🏠 Delivering to: ${order.address}\n⏱ Est. arrival: 3–5 business days\n\nTrack your parcel at: pos.com.my\n\n— *SEREPOS – Seremban Prison Online Sales System*`,
   },
   {
     id: "order_delivered",
     label: "Order Delivered",
     message: (order: typeof ALL_ORDERS[0]) =>
-      `Hi ${order.customer}! ✅\n\nYour order *${order.id}* has been delivered!\n\nWe hope you love your purchase. 🙏 If you're happy with your order, we'd love to hear your feedback!\n\nLeave a review at: threegoodsales.com/reviews\n\n— *Three Good Sales*`,
+      `Hi ${order.customer}! ✅\n\nYour order *${order.id}* has been delivered!\n\nWe hope you love your purchase. 🙏 If you're happy with your order, we'd love to hear your feedback!\n\nLeave a review at: threegoodsales.com/reviews\n\n— *SEREPOS – Seremban Prison Online Sales System*`,
   },
   {
     id: "custom",

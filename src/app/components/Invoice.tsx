@@ -37,7 +37,7 @@ export function Invoice() {
             <div>
               <div className="flex items-center gap-2 mb-1">
                 <Package className="w-5 h-5 text-[#B07D45]" />
-                <span style={{ fontFamily: "'Playfair Display', serif" }} className="text-lg text-white">Three Good Sales</span>
+                <span style={{ fontFamily: "'Playfair Display', serif" }} className="text-lg text-white">SEREPOS – Seremban Prison Online Sales System</span>
               </div>
               <p className="text-xs text-[#A09488]">threegoodsales.com · hello@threegoodsales.com</p>
             </div>

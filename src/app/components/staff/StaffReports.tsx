@@ -103,7 +103,7 @@ export function StaffReports() {
 </head>
 <body>
   <div class="header">
-    <div class="logo">THREE GOOD <span>SALES</span></div>
+    <div class="logo">SEREPOS – Seremban Prison Online Sales System <span>SALES</span></div>
     <div class="report-title">${reportTitle}</div>
     <div class="meta">Generated on ${new Date().toLocaleDateString("en-MY", { weekday: "long", day: "numeric", month: "long", year: "numeric" })} · Confidential</div>
   </div>
@@ -201,7 +201,7 @@ export function StaffReports() {
   </div>
 
   <div class="footer">
-    <span>Three Good Sales Sdn. Bhd. · Confidential & Internal Use Only</span>
+    <span>SEREPOS – Seremban Prison Online Sales System · Confidential & Internal Use Only</span>
     <span>${reportTitle} · Page 1 of 1</span>
   </div>
 </body>

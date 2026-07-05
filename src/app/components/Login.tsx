@@ -46,13 +46,13 @@ export function Login({ onLogin }: LoginProps) {
       <div className="hidden lg:flex lg:w-1/2 bg-[#1C1A18] flex-col justify-between p-12">
         <Link to="/" className="flex items-center gap-2 text-white">
           <Package className="w-6 h-6 text-[#B07D45]" />
-          <span style={{ fontFamily: "'Playfair Display', serif" }} className="text-xl">Three Good Sales</span>
+          <span style={{ fontFamily: "'Playfair Display', serif" }} className="text-xl">SEREPOS</span>
         </Link>
         <div>
           <blockquote style={{ fontFamily: "'Playfair Display', serif" }} className="text-4xl text-white leading-snug italic mb-4">
             "Every product tells a story of <span className="text-[#B07D45]">resilience</span>."
           </blockquote>
-          <p className="text-[#A09488]">Three Good Sales — Wood · Metal · Clothing</p>
+          <p className="text-[#A09488]">SEREPOS – Seremban Prison Online Sales System</p>
         </div>
         <div className="flex gap-4">
           <div className="text-center">

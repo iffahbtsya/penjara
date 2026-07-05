@@ -82,7 +82,7 @@ export function Rewards() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <Star className="w-10 h-10 text-[#B07D45] mx-auto mb-4" />
           <p className="text-[#B07D45] text-sm uppercase tracking-widest mb-2">Loyalty Program</p>
-          <h1 style={{ fontFamily: "'Playfair Display', serif" }} className="text-4xl text-white mb-4">Three Good Rewards</h1>
+          <h1 style={{ fontFamily: "'Playfair Display', serif" }} className="text-4xl text-white mb-4">SEREPOS Rewards</h1>
           <p className="text-[#A09488] max-w-md mx-auto text-sm">Earn points with every purchase. Redeem for discounts and exclusive benefits.</p>
         </div>
       </div>
