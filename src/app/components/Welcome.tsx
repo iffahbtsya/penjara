@@ -3,6 +3,7 @@ import { useAuth } from "../context/AuthContext";
 import { ArrowRight, Star, Shield, Truck, Award } from "lucide-react";
 import { Button } from "./ui/button";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
+import { FAQSection } from "./FAQSection";
 
 const categories = [
   {
@@ -234,6 +235,19 @@ export function Welcome() {
               className="w-full h-full object-cover opacity-80"
             />
           </div>
+        </div>
+      </section>
+      {/* FAQ */}
+      <section className="py-20 bg-white">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <p className="text-[#B07D45] text-sm uppercase tracking-widest mb-3">Got Questions?</p>
+            <h2 style={{ fontFamily: "'Playfair Display', serif" }} className="text-3xl text-[#1C1A18]">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-[#7A7167] mt-3 text-sm">Everything you need to know about Three Good Sales.</p>
+          </div>
+          <FAQSection />
         </div>
       </section>
     </div>
