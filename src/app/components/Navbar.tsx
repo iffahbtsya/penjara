@@ -43,8 +43,8 @@ export function Navbar({ cartCount = 0, isLoggedIn = false, isStaff = false, onL
                 </div>
               )}
             </div>
-            <Link to="/custom-clothes" className="hover:text-[#B07D45] transition-colors">Custom Clothes</Link>
-            {isLoggedIn && <Link to="/rewards" className="hover:text-[#B07D45] transition-colors">Rewards</Link>}
+            
+            
             {isStaff && <Link to="/staff/dashboard" className="hover:text-[#B07D45] transition-colors text-[#B07D45]">Staff Dashboard</Link>}
           </div>
 

@@ -15,7 +15,7 @@ export function StaffAccount({ staffName }: StaffAccountProps) {
     email: "staff@tgs.com",
     phone: "+60 12-987 6543",
     staffId: "STF-001",
-    role: "Senior Sales",
+   
     department: "Customer Relations",
     joined: "15 March 2022",
   });
@@ -58,7 +58,7 @@ export function StaffAccount({ staffName }: StaffAccountProps) {
                 { label: "Full Name", key: "name" as const, type: "text" },
                 { label: "Email Address", key: "email" as const, type: "email" },
                 { label: "Phone Number", key: "phone" as const, type: "tel" },
-                { label: "Role", key: "role" as const, type: "text" },
+              
               ].map(field => (
                 <div key={field.key}>
                   <Label className="text-xs text-[#7A7167] uppercase tracking-widest mb-1.5 block">{field.label}</Label>

@@ -7,7 +7,7 @@ const NAV_ITEMS = [
   { path: "/staff/products", icon: Package, label: "Products" },
   { path: "/staff/orders", icon: Truck, label: "Orders" },
   { path: "/staff/reports", icon: BarChart3, label: "Reports" },
-  { path: "/staff/rewards", icon: Star, label: "Staff Rewards" },
+  
   { path: "/staff/account", icon: User, label: "My Account" },
 ];
 

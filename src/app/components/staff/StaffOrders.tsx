@@ -6,7 +6,7 @@ import { Label } from "../ui/label";
 import { toast } from "sonner";
 
 const ALL_ORDERS = [
-  { id: "TGS-847291", customer: "Jane Doe", email: "jane@example.com", phone: "+60197196775", amount: 1330, items: 3, status: "Delivered", date: "12 Jun 2024", address: "No. 12, Jalan Bukit Bintang, KL" },
+  { id: "TGS-847291", customer: "Jane Doe", email: "jane@example.com", phone: "+60176346907", amount: 1330, items: 3, status: "Delivered", date: "12 Jun 2024", address: "No. 12, Jalan Bukit Bintang, KL" },
   { id: "TGS-651082", customer: "Ahmad Razif", email: "ahmad@example.com", phone: "+60112345678", amount: 420, items: 1, status: "Shipped", date: "3 Jun 2024", address: "Level 3, Menara Citibank, KL" },
   { id: "TGS-503774", customer: "Siti Nora", email: "siti@example.com", phone: "+60134567890", amount: 254, items: 2, status: "Processing", date: "1 Jun 2024", address: "45 Jalan Cheras, Selangor" },
   { id: "TGS-412590", customer: "Chen Wei", email: "chen@example.com", phone: "+60167890123", amount: 890, items: 1, status: "Pending", date: "28 May 2024", address: "22 Jalan Ampang, KL" },

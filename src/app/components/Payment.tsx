@@ -170,24 +170,7 @@ export function Payment() {
             </div>
 
             {/* Voucher */}
-            <div className="bg-white rounded-sm p-6 shadow-sm">
-              <h2 className="font-semibold text-[#1C1A18] mb-4 flex items-center gap-2">
-                <span className="w-6 h-6 bg-[#1C1A18] text-white rounded-full flex items-center justify-center text-xs">3</span>
-                Voucher Code
-              </h2>
-              {voucherApplied ? (
-                <div className="flex items-center justify-between bg-green-50 border border-green-200 rounded-sm px-4 py-3">
-                  <span className="text-sm text-green-700 font-medium">✓ {voucher.toUpperCase()} — RM {voucherDiscount} saved!</span>
-                  <button onClick={() => { setVoucherApplied(false); setVoucherDiscount(0); setVoucher(""); }} className="text-xs text-red-500 hover:underline">Remove</button>
-                </div>
-              ) : (
-                <div className="flex gap-2">
-                  <Input value={voucher} onChange={e => setVoucher(e.target.value)} onKeyDown={e => e.key === "Enter" && handleApplyVoucher()} placeholder="Enter voucher code e.g. WOOD10, FREESHIP" className="bg-[#F7F3EE] border-[#D4C8BC] rounded-sm h-10 text-sm flex-1" />
-                  <Button onClick={handleApplyVoucher} variant="outline" className="border-[#1C1A18] text-[#1C1A18] rounded-sm px-5 h-10 hover:bg-[#1C1A18] hover:text-white transition-colors">Apply</Button>
-                </div>
-              )}
-              <p className="text-xs text-[#A09488] mt-2">Available: WOOD10 · FREESHIP · STF20-XXXXXX (staff vouchers)</p>
-            </div>
+            
           </div>
 
           {/* Summary */}

@@ -157,16 +157,7 @@ export function MyAccount() {
                       className="bg-[#1C1A18] hover:bg-[#B07D45] text-white rounded-sm">Save Changes</Button>
                   )}
                 </div>
-                <div className="mt-8 bg-gradient-to-r from-[#1C1A18] to-[#3D3530] rounded-sm p-5 text-white">
-                  <div className="flex justify-between items-center">
-                    <div>
-                      <p className="text-[#A09488] text-xs uppercase tracking-widest mb-1">Loyalty Points</p>
-                      <p style={{ fontFamily: "'Playfair Display', serif" }} className="text-3xl">{(user.rewardPoints || 0).toLocaleString()} pts</p>
-                    </div>
-                    <Star className="w-10 h-10 text-[#B07D45]" />
-                  </div>
-                  <p className="text-[#A09488] text-xs mt-3">Gold Tier · Earn 1 pt per RM1 spent</p>
-                </div>
+                
               </div>
             )}
 
@@ -283,7 +274,7 @@ export function MyAccount() {
                   {[
                     { label: "Email Notifications", desc: "Receive order updates and promotions", enabled: true },
                     { label: "SMS Alerts", desc: "Get delivery status via SMS", enabled: false },
-                    { label: "Birthday Rewards", desc: "Automatic birthday reward activation", enabled: true },
+                    
                   ].map(s => (
                     <div key={s.label} className="flex items-start justify-between py-3 border-b border-[#EDE8E0]">
                       <div>
